@@ -1,7 +1,9 @@
-#pragma config(Motor,  port1,           driftmtr,        tmotorServoContinuousRotation, openLoop)
-#pragma config(Motor,  port2,           clawServo,           tmotorServoStandard, openLoop)
+#pragma config(Motor,  port2,           driftmtr,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port3,           maniphorizontal,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port4,           manipvertical,        tmotorServoContinuousRotation, openLoop)
+#pragma config(Motor,  port5,           clawServo,           tmotorServoStandard, openLoop)
+
+
 //*!!Code automatically generatd by the configuration wizard
 
 // leftX stands for the X axis of the left joystick on the controller
@@ -47,7 +49,7 @@ task controller()
 
 	/* This prevents motor jittering by using a threshhold,
 	   which we set as a variable of 6 on line 18 */
-		leftX = vexRT(Ch1);
+		leftX = vexRT(Ch4);
 		if(abs(leftX)<thresh)
 		{
 			leftX = 0;
@@ -59,7 +61,7 @@ task controller()
 			rightX = 0;
 
 		}
-		rightY = vexRT(Ch1);
+		rightY = vexRT(Ch2);
 		if(abs(rightY)<thresh)
 		{
 			rightY = 0;
@@ -105,4 +107,6 @@ task main()
 	startTask(controller);
 	startTask(drift);
 	startTask(manip);
+	while(on){
+	}
 }
