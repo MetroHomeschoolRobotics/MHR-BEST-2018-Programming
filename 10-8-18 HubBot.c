@@ -80,7 +80,7 @@ task controller()
 		}
 
 		//If there is input from the controller, start the closeClaw task
-		if (vexRT[Btn8D]){
+		if (vexRT[Btn5U]){
 			startTask(closeClaw);
 		}
 		//If there isnt any input, start the task to open the claw
