@@ -1,9 +1,3 @@
-
-task main()
-{
-
-
-
 #pragma config(Motor,  port2,           driftmtr,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port3,           maniphorizontal,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port4,           manipvertical,        tmotorServoContinuousRotation, openLoop)
@@ -114,7 +108,7 @@ task manip()
 {
 	while(on){
 		motor[maniphorizontal]=rightX;
-		motor[manipvertical]=leftY;
+		motor[manipvertical] = -leftY / 2;
 		motor[armExtension]=rightY;
 	}
 }
