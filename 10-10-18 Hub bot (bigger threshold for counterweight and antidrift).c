@@ -127,7 +127,7 @@ task manip()
 {
 	while(on){
 		motor[maniphorizontal]=-rightX;
-		motor[manipvertical] = leftY / 2;
+		motor[manipvertical] = leftY;
 		motor[armExtension]=rightY;
 	}
 }
