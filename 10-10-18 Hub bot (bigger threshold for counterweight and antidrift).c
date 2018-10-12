@@ -46,12 +46,12 @@ task openClaw()
 
 task startServodown()
 {
-	motor[startServo] = 127;
+	motor[startServo] = -127;
 }
 
 task startServoup()
 {
-	motor[startServo] = -127;
+	motor[startServo] = 127;
 }
 
 /* This task checks input from the controller to set variables for the controller*/
