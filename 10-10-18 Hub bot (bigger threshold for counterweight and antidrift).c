@@ -69,7 +69,7 @@ task controller()
 		leftX = vexRT(Ch4);
 		if(abs(leftX)<thresh)
 		{
-			leftX = 16;
+			leftX = -16;
 
 		}
 
@@ -127,7 +127,7 @@ task manip()
 {
 	while(on){
 		motor[maniphorizontal]=-rightX;
-		motor[manipvertical] = leftY;
+		motor[manipvertical] = leftY * .75;
 		motor[armExtension]=rightY;
 	}
 }
