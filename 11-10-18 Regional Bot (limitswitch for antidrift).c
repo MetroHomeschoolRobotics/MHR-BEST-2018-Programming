@@ -1,10 +1,11 @@
-#pragma config(Motor,  port2,           driftmtr,        tmotorServoContinuousRotation, openLoop)
+#pragma config(Motor,  port8,           driftmtr,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port3,           maniphorizontal,        tmotorServoContinuousRotation, openLoop)
 #pragma config(Motor,  port4,           manipvertical,        tmotorServoContinuousRotation, openLoop)
-#pragma config(Motor,  port5,           clawServo,           tmotorServoStandard, openLoop)
+#pragma config(Motor,  port9,           clawServo,           tmotorServoStandard, openLoop)
 #pragma config(Motor,  port6,           armExtension,        tmotorServoContinuousRotation, openLoop)
-#pragma config(Motor,  port7,           startServo,          tmotorServoStandard, openLoop)
+#pragma config(Motor,  port2,           startServo,          tmotorServoStandard, openLoop)
 #pragma config(Sensor, dgtl12,          LimitSwitch,         sensorTouch)
+#pragma config(Motor,  port7,           scoopGateservo)
 
 
 //*!!Code automatically generatd by the configuration wizard
@@ -53,6 +54,16 @@ task startServodown()
 task startServoup()
 {
 	motor[startServo] = 127;
+}
+
+task scoopGateservoclosed()
+{
+	motor[scoopGateservo] = 127;
+}
+
+task scoopGateservoopen()
+{
+	motor[scoopGateservo] = -127;
 }
 
 /* This task checks input from the controller to set variables for the controller*/
@@ -118,6 +129,18 @@ task controller()
 
 		else{
 			startTask(startServoup);
+
+
+		if(vexRT[Btn5U]){
+
+		  startTask(scoopGateservoopen);
+		}
+
+		else{
+			startTask(scoopGateservoclosed);
+
+
+			}
 		}
 	}
 }
